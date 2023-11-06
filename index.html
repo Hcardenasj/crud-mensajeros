@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Gestión de Mensajeros</title>
 </head>
 <body>
-    <h1>HELLO WORLD</h1>
+    <header>
+        <h1>Gestión de Mensajeros</h1>
+    </header>
+
+    <div class="container">
+        <div class="form">
+            <h2>Agregar Mensajero</h2>
+            <form id="messengerForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" required>
+
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+
+        <div class="messenger-list">
+            <h2>Listado de Mensajeros</h2>
+            <ul id="messengerList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
