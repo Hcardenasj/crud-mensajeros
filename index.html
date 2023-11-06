@@ -14,17 +14,23 @@
     <div class="container">
         <div class="form">
             <h2>Agregar Mensajero</h2>
-            <form id="messengerForm">
-                <label for="nombre">Nombre:</label>
+            <form  id="messengerForm">
+                <label for="nombre">Nombre Completo:</label>
                 <input type="text" id="nombre" required>
-                
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" required>
+
+                <label for="doc">Identificacion:</label>
+                <input type="number" id="doc" required>
 
                 <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" required>
+                <input type="number" id="telefono" required>
 
-                
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" required>
+
+                <label for="veh">Tipo de vehiculo</label>
+                <input type="radio" id="moto" name="tipo_veh" value="Motocicleta" required>Motocicleta
+                <input type="radio" id="bici" name="tipo_veh" value="Bicicleta" required>Bicicleta
+                <input type="radio" id="auto" name="tipo_veh" value="Automovil" required>Automovil<br><br>
 
                 <button type="submit">Agregar</button>
             </form>
@@ -32,8 +38,21 @@
 
         <div class="messenger-list">
             <h2>Listado de Mensajeros</h2>
-            <ul id="messengerList"></ul>
+            <table id="messengerTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Identificación</th>
+                        <th>Teléfono</th>
+                        <th>Edad</th>
+                        <th>Tipo de Vehiculo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="messengerBody"></tbody>
+            </table>
         </div>
+        
     </div>
 
     <script src="script.js"></script>

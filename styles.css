@@ -97,3 +97,29 @@ button {
 button:hover {
     background-color: #555;
 }
+
+/* Estilos para la tabla */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para resaltar las filas al pasar el cursor sobre ellas */
+tr:hover {
+    background-color: #ddd;
+}
