@@ -19,7 +19,21 @@ header {
     margin: 2rem;
 }
 
-/* Estilos para el formulario de agregar mensajeros */
+/* Estilos comunes para botones */
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Estilos para formularios */
 .form {
     background-color: #fff;
     padding: 2rem;
@@ -43,19 +57,6 @@ header {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
-}
-
-.form button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.form button:hover {
-    background-color: #555;
 }
 
 /* Estilos para la lista de mensajeros */
@@ -84,19 +85,6 @@ header {
     margin: 5px 0;
 }
 
-/* Estilos generales para los botones */
-button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #555;
-}
 
 /* Estilos para la tabla */
 table {
@@ -119,7 +107,3 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Estilos para resaltar las filas al pasar el cursor sobre ellas */
-tr:hover {
-    background-color: #ddd;
-}
