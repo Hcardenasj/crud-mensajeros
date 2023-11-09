@@ -1,131 +1,120 @@
 let listaMensajeros = [];
 
 const objMensajero = {
-    id: "",
     nombre: '',
     documento: '',
     telefono: '',
-    edad: "",
+    edad: '',
     vehiculo: ''
 }
 
 let editando = false;
 
 document.addEventListener('DOMContentLoaded', function () {
-    const messengerForm = document.getElementById('messengerForm');
-    const messengerBody = document.getElementById('messengerBody');
+    const messengerForm = document.querySelector('#messengerForm');
+    const nombreInput = document.querySelector('#nombre');
+    const docInput = document.querySelector('#doc');
+    const telefonoInput = document.querySelector('#telefono');
+    const edadInput = document.querySelector('#edad');
+    const vehRadioButtons = document.getElementsByName('tipo_veh');
+
+    const agregarButton = document.querySelector('button[type="submit"]');
+
+    const messengerBody = document.querySelector('#messengerBody');
 
     messengerForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const nombre = document.getElementById('nombre').value;
-        const documento = document.getElementById('doc').value;
-        const telefono = document.getElementById('telefono').value;
-        const edad = document.getElementById('edad').value;
+        const nombre = nombreInput.value;
+        const documento = docInput.value;
+        const telefono = telefonoInput.value;
+        const edad = edadInput.value;
 
-        const vehRadioButtons = document.getElementsByName('tipo_veh');
-        let veh = ''; // Inicialmente no seleccionado
+        let vehiculo = '';
         for (let i = 0; i < vehRadioButtons.length; i++) {
             if (vehRadioButtons[i].checked) {
-                veh = vehRadioButtons[i].value;
-                break; // Termina el bucle si se encuentra un valor seleccionado
+                vehiculo = vehRadioButtons[i].value;
+                break;
             }
         }
 
-        if (nombre && telefono && veh) {
+        if (nombre && telefono && vehiculo) {
             if (editando) {
                 editarMensajero();
                 editando = false;
             } else {
-                agregarMensajero(nombre, documento, telefono, edad, veh);
+                agregarMensajero(nombre, documento, telefono, edad, vehiculo);
             }
 
-            // Limpia el formulario
             messengerForm.reset();
         }
     });
 
     function agregarMensajero(nombre, documento, telefono, edad, vehiculo) {
-        
         const mensajeroExistente = listaMensajeros.find((mensajero) => mensajero.documento === documento);
-        
         if (mensajeroExistente) {
             alert('Ya existe un mensajero con el mismo documento. No se puede agregar.');
             return;
         }
-
-        const mensajero = {
-            nombre,
-            documento,
-            telefono,
-            edad,
-            vehiculo
-        };
-
-        listaMensajeros.push(mensajero);
+        const nuevoMensajero = { nombre, documento, telefono, edad, vehiculo };
+        listaMensajeros.push(nuevoMensajero);
         mostrarMensajeros();
+        messengerForm.reset();
+        limpiarObjeto();
     }
 
     function mostrarMensajeros() {
-        // Limpia la tabla de mensajeros
         messengerBody.innerHTML = '';
 
         listaMensajeros.forEach((mensajero) => {
             const row = messengerBody.insertRow();
-            row.dataset.id = mensajero.id;
 
-            row.insertCell(0).textContent = mensajero.nombre;
-            row.insertCell(1).textContent = mensajero.documento;
-            row.insertCell(2).textContent = mensajero.telefono;
-            row.insertCell(3).textContent = mensajero.edad;
-            row.insertCell(4).textContent = mensajero.vehiculo;
+            const cell1 = row.insertCell(0);
+            cell1.textContent = mensajero.nombre;
 
-            const cell5 = row.insertCell(5);
+            const cell2 = row.insertCell(1);
+            cell2.textContent = mensajero.documento;
 
-            // Botón Eliminar
+            const cell3 = row.insertCell(2);
+            cell3.textContent = mensajero.telefono;
+
+            const cell4 = row.insertCell(3);
+            cell4.textContent = mensajero.edad;
+
+            const cell5 = row.insertCell(4);
+            cell5.textContent = mensajero.vehiculo;
+
+            const cell6 = row.insertCell(5);
+
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Eliminar';
-            deleteButton.style.backgroundColor="#E74C3C"
+            deleteButton.style.backgroundColor = '#E74C3C';
             deleteButton.classList.add('btn', 'btn-delete');
             deleteButton.addEventListener('click', function () {
-                eliminarMensajero(mensajero.id);
+                eliminarMensajero(mensajero.documento);
             });
-            cell5.appendChild(deleteButton);
+            cell6.appendChild(deleteButton);
 
-            // Botón Editar
             const editButton = document.createElement('button');
             editButton.textContent = 'Editar';
             editButton.style.backgroundColor = '#4CAF50';
             editButton.classList.add('btn', 'btn-edit');
             editButton.addEventListener('click', function () {
-
-                const agregarButton = document.querySelector('button[type="submit"]');
-                if (!editando) {
-                    // Si no estás en modo de edición, cambia el botón Agregar a Actualizar y su color
-                    agregarButton.textContent = "Actualizar";
-                    agregarButton.style.backgroundColor = "#4CAF50"; // Color verde
-                    editando = true;
-                } else {
-                    // Si ya estás en modo de edición, cambia el botón Agregar de vuelta a su estado original
-                    agregarButton.textContent = "Agregar";
-                    agregarButton.style.backgroundColor = "#333"; // Color original
-                    editando = false;
-                }
+                agregarButton.textContent = "Actualizar";
+                agregarButton.style.backgroundColor = "#4CAF50";
+                editando = true;
                 cargarMensajero(mensajero);
             });
-            cell5.appendChild(editButton);
+            cell6.appendChild(editButton);
         });
     }
 
-
     function cargarMensajero(mensajero) {
-        document.getElementById('nombre').value = mensajero.nombre;
-        document.getElementById('doc').value = mensajero.documento;
+        nombreInput.value = mensajero.nombre;
+        docInput.value = mensajero.documento;
+        telefonoInput.value = mensajero.telefono;
+        edadInput.value = mensajero.edad;
         
-        document.getElementById('telefono').value = mensajero.telefono;
-        document.getElementById('edad').value = mensajero.edad;
-
-        const vehRadioButtons = document.getElementsByName('tipo_veh');
         for (let i = 0; i < vehRadioButtons.length; i++) {
             if (vehRadioButtons[i].value === mensajero.vehiculo) {
                 vehRadioButtons[i].checked = true;
@@ -133,17 +122,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        objMensajero.id = mensajero.id;
+        objMensajero.documento = mensajero.documento;
+        // Deshabilitar el campo de documento en modo de edición
+        docInput.disabled = true;
     }
 
     function editarMensajero() {
-        const id = objMensajero.id;
-        const nombre = document.getElementById('nombre').value;
-        const documento = document.getElementById('doc').value;
-        const telefono = document.getElementById('telefono').value;
-        const edad = document.getElementById('edad').value;
+        const documento = objMensajero.documento;
+        const nombre = nombreInput.value;
+        const telefono = telefonoInput.value;
+        const edad = edadInput.value;
 
-        const vehRadioButtons = document.getElementsByName('tipo_veh');
         let vehiculo = '';
         for (let i = 0; i < vehRadioButtons.length; i++) {
             if (vehRadioButtons[i].checked) {
@@ -153,9 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         listaMensajeros = listaMensajeros.map((mensajero) => {
-            if (mensajero.id === id) {
+            if (mensajero.documento === documento) {
                 return {
-                    id,
                     nombre,
                     documento,
                     telefono,
@@ -168,22 +156,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         mostrarMensajeros();
 
-        // Limpia el formulario
         messengerForm.reset();
         editando = false;
 
-        // Cambia el botón de "Agregar" de vuelta a su estado original
-    const agregarButton = document.querySelector('button[type="submit"]');
-    agregarButton.textContent = "Agregar";
-    agregarButton.style.backgroundColor = "#333"; // Color original
-    docInput.disabled = false;
+        agregarButton.textContent = "Agregar";
+        agregarButton.style.backgroundColor = "#333";
+
+        // Habilitar nuevamente el campo de documento después de la edición
+        docInput.disabled = false;
     }
 
-    function eliminarMensajero(id) {
-        listaMensajeros = listaMensajeros.filter((mensajero) => mensajero.id !== id);
+    function eliminarMensajero(documento) {
+        listaMensajeros = listaMensajeros.filter((mensajero) => mensajero.documento !== documento);
         mostrarMensajeros();
     }
 
-    // Inicialmente, muestra la lista de mensajeros vacía
     mostrarMensajeros();
 });
