@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="mt-5">
+        {{#if mensajeros}}
+        <div class="col-md-3">
+            <table>
+                <thead>
+                    <th>Nombre</th>
+                    <th>Identificacion</th>
+                    <th>Telefono</th>
+                    <th>Edad</th>
+                    <th>Tipo de Vehiculo</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    {{#each}}
+                    <tr>
+                        <td>{{nombre}}</td>
+                        <td>{{identificacion}}</td>
+                        <td>{{telefono}}</td>
+                        <td>{{edad}}</td>
+                        <td>{{vehiculo}}</td>
+                        <td>
+                            <div>
+                                <a href="#" class="btn btn-danger">Eliminar</a>
+                                <a href="#" class="btn btn-warning">Editar</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr class="table-dark">
+                        <td colspan="6">REGISTRO DE MENSAJEROS</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        {{else}}
+            <div class="card text-center mx-auto" style="width: 350px;">
+                <div class="card-header">
+                    <h3>Crea tu mensajero</h3>
+                </div>
+                <div class="card-body">
+                    <p>Presiona este boton para poder añadir tu mensajero</p>
+                    <a href="/add" class="btn btn-primary">Ir a crear</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

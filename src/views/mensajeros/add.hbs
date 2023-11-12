@@ -1,0 +1,49 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-uppercase">Crear Nuevo Mensajero</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" autofocus required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="identificacion" class="form-label">Identificación</label>
+                            <input type="number" class="form-control" id="identificacion" name="identificacion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="number" class="form-control" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad" name="edad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de vehículo</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="moto" name="tipo_veh" value="Motocicleta" required>
+                                <label class="form-check-label" for="moto">Motocicleta</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="bici" name="tipo_veh" value="Bicicleta" required>
+                                <label class="form-check-label" for="bici">Bicicleta</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="auto" name="tipo_veh" value="Automóvil" required>
+                                <label class="form-check-label" for="auto">Automóvil</label>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success" type="submit">Crear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
