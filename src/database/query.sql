@@ -8,7 +8,7 @@ CREATE TABLE mensajero(
     identificacion varchar (50)  NOT NULL,
     telefono int (12)  NOT NULL,
     edad int (4)  NOT NULL,
-    vehiculo varchar (20)  NOT NULL
+    municipio varchar (20)  NOT NULL
 );
 
 SELECT * FROM mensajero;

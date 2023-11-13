@@ -1,34 +1,34 @@
 <div class="container p-4">
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-4 mx-auto">
             <div class="card text-center">
                 <div class="card-header bg-primary text-white">
-                    <h3 class="text-uppercase">Crear Nuevo Mensajero</h3>
+                    <h3 class="text-uppercase">EDITAR MENSAJERO</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/add" method="post">
+                    <form action="/edit/{{mensajero.id}}" method="post">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" autofocus required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{mensajero.nombre}}" required>
                         </div>
                         <div class="mb-3">
                             <label for="identificacion" class="form-label">Identificación</label>
-                            <input type="number" class="form-control" id="identificacion" name="identificacion" required>
+                            <input type="number" class="form-control" id="identificacion" value="{{mensajero.identificacion}}" name="identificacion" required>
                         </div>
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="number" class="form-control" id="telefono" name="telefono" required>
+                            <input type="number" class="form-control" id="telefono" value="{{mensajero.telefono}}" name="telefono" required>
                         </div>
                         <div class="mb-3">
                             <label for="edad" class="form-label">Edad</label>
-                            <input type="number" class="form-control" id="edad" name="edad" required>
+                            <input type="number" class="form-control" id="edad" value="{{mensajero.edad}}" name="edad" required>
                         </div>
                         <div class="mb-3">
                             <label for="municipio" class="form-label">Municipio</label>
-                            <input type="text" class="form-control" id="municipio" name="municipio" required>
+                            <input type="text" class="form-control" id="municipio" value="{{mensajero.municipio}}" name="municipio" required>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-success" type="submit">Crear</button>
+                            <button class="btn btn-warning" type="submit">Actualizar</button>
                         </div>
                     </form>
                 </div>
