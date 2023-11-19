@@ -3,17 +3,24 @@
         <div class="col-md-4 mx-auto">
             <div class="card text-center">
                 <div class="card-header bg-primary text-white">
-                    <h3 class="text-uppercase">Crear Nuevo Mensajero</h3>
+                    <h3 class="text-uppercase" id="createMessengerForm">Crear Nuevo Mensajero</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/add" method="post">
+                    <form action="/add" method="post" id="createMessengerForm" onsubmit="return showConfirmation()">
+                        <!-- Mensaje de confirmación (inicialmente oculto) -->
+                        <div id="confirmationMessage" class="mt-3" style="display: none;">
+                            <div class="alert alert-success" role="alert">
+                                ¡El mensajero se creó exitosamente! <a href="/list">Ir a ver.</a>
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" autofocus required>
                         </div>
                         <div class="mb-3">
                             <label for="identificacion" class="form-label">Identificación</label>
-                            <input type="number" class="form-control" id="identificacion" name="identificacion" required>
+                            <input type="number" class="form-control" id="identificacion" name="identificacion"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Teléfono</label>
@@ -31,8 +38,18 @@
                             <button class="btn btn-success" type="submit">Crear</button>
                         </div>
                     </form>
+
+
+                    <!-- Script para mostrar el mensaje de confirmación -->
+                    <script>
+                        function showConfirmation() {
+                            // Muestra el mensaje de confirmación después de enviar el formulario
+                            document.getElementById('confirmationMessage').style.display = 'block';
+
+                            // Puedes redirigir al usuario a otra página o realizar otras acciones según tus necesidades
+                        }
+                    </script>
                 </div>
             </div>
         </div>
     </div>
-</div>
