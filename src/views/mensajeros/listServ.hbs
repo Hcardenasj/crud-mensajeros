@@ -2,15 +2,17 @@
     <div class="mt-5">
         <div mensajeros=""></div>
         {{#if servicios}}
-
         <table class="table text-center">
             <thead>
                 <tr class="table-dark">
                     <th>Id</th>
                     <th>Descripción</th>
                     <th>Fecha</th>
+                    <th>Direccion Recogida</th>
+                    <th>Direccion Entrega</th>
+                    <th>Nombre del Cliente</th>
+                    <th>Valor</th>
                     <th>Acciones</th>
-                    <!-- Agrega más columnas según sea necesario -->
                 </tr>
             </thead>
             <tbody>
@@ -19,33 +21,39 @@
                     <td>{{id}}</td>
                     <td>{{descripcion}}</td>
                     <td>{{fecha}}</td>
+                    <td>{{dir_recog}}({{mun_recog}})</td>
+                    <td>{{dir_entrega}}({{mun_entrega}})</td>
+                    <td>{{nombre_cliente}}</td>
+                    <td>{{valor}}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="/delete/{{id}}" class="btn btn-danger">
+                            <a href="/delete/{{mensajero_id}}/{{id}}" class="btn btn-danger">
                                 <i class="fa-solid fa-trash"></i></a>
-                            <a href="/edit/{{id}}" class="btn btn-warning">
-                                <i class="fa-solid fa-pencil"></i></a>
+                            <a href="/editServ/{{mensajero_id}}/{{id}}" class="btn btn-warning">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
                         </div>
                     </td>
-                    <!-- Agrega más columnas según sea necesario -->
                 </tr>
                 {{/each}}
             </tbody>
             <tfoot>
                 <tr class="table-dark">
-                    <td colspan="5">REGISTRO DE SERVICIOS</td>
+                    <td colspan="8">REGISTRO DE SERVICIOS</td>
                 </tr>
             </tfoot>
         </table>
         {{else }}
+
         <div class="card text-center mx-auto" style="width: 350px;">
             <div class="card-header">
                 <h3>Añade tu servicio</h3>
             </div>
             <div class="card-body">
-                <p>Este mensajero aún no ha añadido el primer servicio, ve a añadirlo.</p>
-                <a href="/addServ/{{id}}" class="btn btn-primary">Ir a crear</a>
+                <p class="lead">Este mensajero aún no ha añadido el primer servicio, ve a añadirlo.</p>
+                <a href="/list" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i> Volver</a>
             </div>
-            {{/if}}
         </div>
+        {{/if}}
     </div>
+</div>

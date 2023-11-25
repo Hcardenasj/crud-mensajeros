@@ -1,0 +1,79 @@
+<head>
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-message {
+        background-color: #f8d7da;
+        /* Color de fondo rojo claro */
+        color: #721c24;
+        /* Color de texto rojo oscuro */
+        padding: 10px;
+        /* Espaciado interno */
+        border: 1px solid #f5c6cb;
+        /* Borde rojo claro */
+        border-radius: 5px;
+        /* Bordes redondeados */
+        margin-bottom: 15px;
+        /* Margen inferior para separación */
+    }
+
+    .success-message {
+    background-color: #d4edda; /* Color de fondo verde claro */
+    color: #155724; /* Color de texto verde oscuro */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #c3e6cb; /* Borde verde claro */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Margen inferior para separación */
+}
+</style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white text-center">
+                        <h5 class="card-title">Registrarse</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="/register" method="post">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Registrarse</button>
+                                <a href="/login" class="btn btn-primary">Iniciar Sesion</a>
+                            </div>
+                            <br>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

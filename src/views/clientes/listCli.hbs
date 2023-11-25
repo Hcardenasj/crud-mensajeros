@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="mt-5">
+        {{#if mensajeros}}
+
+        <table class="table text-center">
+            <thead>
+                <tr class="table-dark">
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Identificacion</th>
+                    <th>Telefono</th>
+                    <th>Dirección</th>
+                    <th>Municipio</th>
+                    <th>Nivel de Fidelidad</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {{#each mensajeros}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{nombre}}</td>
+                    <td>{{identificacion}}</td>
+                    <td>{{telefono}}</td>
+                    <td>{{direccion}}</td>
+                    <td>{{muncipio}}</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{nivel_fidelidad}}%;"
+                                aria-valuenow="{{nivel_fidelidad}}" aria-valuemin="0" aria-valuemax="100">
+                                {{nivel_fidelidad}}%</div>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            <tfoot>
+                <tr class="table-dark">
+                    <td colspan="8">CLIENTES DE A TU ENTREGA</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    {{/if}}
+</div>
+</div>

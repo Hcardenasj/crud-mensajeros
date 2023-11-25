@@ -6,22 +6,51 @@
                     <h3 class="text-uppercase" id="createMessengerForm">Añade tu servicio</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/addServ/{{mensajeroId}}" method="post" id="createMessengerForm" onsubmit="return showConfirmation()">
-                        <!-- Mensaje de confirmación (inicialmente oculto) -->
-                        <div id="confirmationMessage" class="mt-3" style="display: none;">
-                            <div class="alert alert-success" role="alert">
-                                ¡El mensajero se creó exitosamente! <a href="/list">Ir a ver.</a>
-                            </div>
-                        </div>
-                        
+                    <form action="/addServ/{{mensajeroId}}/{{servicio.id}}" method="post"
+                        onsubmit="return validarFecha()">
+
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripcion</label>
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                placeholder="DOMICILIO BUCARAMANGA" required>
                         </div>
                         <div class="mb-3">
                             <label for="fecha" class="form-label">Fecha</label>
-                            <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            <input type="text" class="form-control" id="fecha" name="fecha" placeholder="YYYY/MM/DD"
+                                required>
                         </div>
+                        <div class="mb-3">
+                            <label for="valor" class="form-label">Valor del servicio: $</label>
+                            <input type="number" class="form-control" id="valor" name="valor" placeholder="12000"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dir_recog" class="form-label">Dirección recogida</label>
+                            <input type="text" class="form-control" id="dir_recog" name="dir_recog"
+                                placeholder="CALLE 11#22-02 SAN FRANCISCO" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mun_recog" class="form-label">Municipio recogida</label>
+                            <input type="text" class="form-control" id="mun_recog" name="mun_recog"
+                                placeholder="BUCARAMANGA" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dir_entrega" class="form-label">Dirección entrega</label>
+                            <input type="text" class="form-control" id="dir_entrega" name="dir_entrega"
+                                placeholder="Anillo Vial #415-24 Portal del Oviedo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mun_entrega" class="form-label">Municipio entrega</label>
+                            <input type="text" class="form-control" id="mun_entrega" name="mun_entrega"
+                                placeholder="FLORIDABLANCA" required>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <label for="cliente_id" class="form-label">Id del Cliente</label>
+                            <input type="number" class="form-control" id="cliente_id" name="cliente_id" required>
+
+                            <a href="/listCli" style="width: 10%; height: 20%;" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+                        </div>
+                        
                         <div class="d-grid gap-2">
                             <button class="btn btn-success" type="submit">Añadir</button>
                         </div>
@@ -30,3 +59,15 @@
             </div>
         </div>
     </div>
+    <script>
+        function validarFecha() {
+            var fechaInput = document.getElementById("fecha").value;
+            var fechaValida = new Date(fechaInput);
+
+            if (isNaN(fechaValida.getTime())) {
+                alert("Por favor, ingresa una fecha válida.");
+                return false;
+            }
+            return true;
+        }
+    </script>

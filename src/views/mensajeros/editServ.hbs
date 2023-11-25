@@ -1,0 +1,55 @@
+<div class="container p-4">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-uppercase">Editar tu Servicio</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/editServ/{{mensajeroId}}/{{servicio.id}}" method="post">
+                        <input type="hidden" name="mensajeroId" value="{{mensajeroId}}">
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                value="{{servicio.descripcion}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha</label>
+                            <input type="text" class="form-control" id="fecha" name="fecha" value="{{ servicio.fecha}}"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="valor" class="form-label">Valor del servicio: $</label>
+                            <input type="number" class="form-control" id="valor" name="valor" value="{{servicio.valor}}"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dir_recog" class="form-label">Dirección recogida</label>
+                            <input type="text" class="form-control" id="dir_recog" name="dir_recog"
+                                value="{{servicio.dir_recog}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mun_recog" class="form-label">Municipio recogida</label>
+                            <input type="text" class="form-control" id="mun_recog" name="mun_recog"
+                                value="{{servicio.mun_recog}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dir_entrega" class="form-label">Dirección entrega</label>
+                            <input type="text" class="form-control" id="dir_entrega" name="dir_entrega"
+                                value="{{servicio.dir_entrega}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mun_entrega" class="form-label">Municipio entrega</label>
+                            <input type="text" class="form-control" id="mun_entrega" name="mun_entrega"
+                                value="{{servicio.mun_entrega}}" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success" type="submit">Añadir</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
