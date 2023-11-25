@@ -230,7 +230,7 @@ router.post('/editServ/:mensajeroId/:servicioId', async (req, res) => {
         };
 
         // Actualizar el servicio en la base de datos
-        await pool.query('UPDATE mensajero.servicios SET ? WHERE id = ? AND mensajero_id = ?', [editServicio, servicioId, mensajeroId]);
+        await pool.query('UPDATE mensajerosDB.servicios SET ? WHERE id = ? AND mensajero_id = ?', [editServicio, servicioId, mensajeroId]);
 
         // Calcular la diferencia en el valor del servicio
         const diferenciaValor = valor - existingValor;
