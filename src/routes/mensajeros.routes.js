@@ -27,11 +27,23 @@ router.get('/list', async (req, res) => {
 router.post('/add', async (req, res) => {
     try {
         const { nombre, identificacion, telefono, edad, municipio } = req.body;
+
         const newMensajero = {
             nombre, identificacion, telefono, edad, municipio
         }
-        await pool.query('INSERT INTO mensajero SET ?', [newMensajero]);
-        res.redirect('/list');
+
+        try {
+            await pool.query('INSERT INTO mensajero SET ?', [newMensajero]);
+            res.redirect('/list');
+        } catch (error) {
+            if (error.code == 'ER_DUP_ENTRY') {
+                // Ya existe un mensajero con el mismo documento, puedes manejarlo según tus necesidades
+                return res.redirect('/error-documento');
+            } else {
+                // Otro tipo de error, manejar según tus necesidades
+                throw error;
+            }
+        }
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -69,13 +81,9 @@ router.post('/edit/:id', async (req, res) => {
 router.get('/error-page', (req, res) => {
     res.render('error/error-page'); // Reemplaza 'error-page' con el nombre de tu vista de error
 });
-//Render de error de correo
-router.get('/error-correo', (req, res) => {
-    res.render('error/error-correo'); // Reemplaza 'error-page' con el nombre de tu vista de error
-});
 
-router.get('/error-password', (req, res) => {
-    res.render('error/error-password'); // Reemplaza 'error-page' con el nombre de tu vista de error
+router.get('/error-documento', (req, res) => {
+    res.render('error/error-documento'); // Reemplaza 'error-page' con el nombre de tu vista de error
 });
 
 //Ruta para que me ELIMINE a un mensajero especificio
